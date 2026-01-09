@@ -29,35 +29,22 @@ export default function Blog() {
   return (
     <>
       <NavBar />
-      <main className="pt-28 pb-16 min-h-screen bg-gradient-to-b from-gray-100 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <main className="pt-28 pb-16 min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-gray-100">
         <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-10 text-center text-gray-900 dark:text-white">
-            Blog
-          </h1>
-          <div className="grid gap-8 md:grid-cols-2">
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-4">Blog</h1>
+          <p className="text-lg text-gray-400 mb-10">
+            Insights and stories from my journey in engineering, photography & music
+          </p>
+          <div className="grid gap-8 sm:grid-cols-2">
             {posts.map((post) => (
-              <article
-                key={post.slug}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition border border-gray-200 dark:border-gray-700 overflow-hidden"
-              >
-                <div className="p-5">
-                  <h2 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
-                    {post.title}
-                  </h2>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                    {post.date}
-                  </p>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    {post.excerpt}
-                  </p>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
-                  >
-                    Read more
-                  </Link>
+              <Link href={`/blog/${post.slug}`} key={post.slug}>
+                <div className="group rounded-2xl border border-gray-700 bg-gray-800/50 p-6 backdrop-blur transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  <h2 className="text-2xl font-semibold text-white mb-2">{post.title}</h2>
+                  <p className="text-xs uppercase tracking-wide text-purple-400 mb-1">{post.date}</p>
+                  <p className="text-sm text-gray-300 mb-4">{post.excerpt}</p>
+                  <span className="inline-block font-medium text-purple-500 group-hover:underline">Read More →</span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
