@@ -3,15 +3,33 @@ import { useState, useEffect } from 'react';
 
 export default function NavBar() {
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Initialize dark mode from localStorage on mount
+  useEffect(() => {
+    setMounted(true);
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setIsDark(true);
+      document.documentElement.classList.add('dark');
+    } else if (savedTheme === 'light') {
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   // Apply or remove the 'dark' class on the html element when isDark changes
   useEffect(() => {
+    if (!mounted) return;
+    
     if (isDark) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
-  }, [isDark]);
+  }, [isDark, mounted]);
 
   const toggleDark = () => setIsDark(!isDark);
 
