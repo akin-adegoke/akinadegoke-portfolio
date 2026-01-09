@@ -11,7 +11,7 @@ export default function Contact() {
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">
             I'd love to hear from you. Whether you want to collaborate on an engineering project, discuss photography adventures, or share musical vibes, feel free to reach out.
-          </h1>
+          </p>
           <div className="flex gap-6 mb-12">
             <a 
               href="https://www.linkedin.com/in/adegoke" 
