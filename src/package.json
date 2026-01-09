@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/akin-adegoke/akinadegoke-portfolio#readme",
   "dependencies": {
-    "gray-matter": "^4.0.3",
-    "next": "^15.1.7",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+  "gray-matter": "^4.0.3",
+    "next": "^15.1.11",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
