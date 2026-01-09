@@ -3,38 +3,53 @@ import NavBar from "../components/NavBar";
 export default function Photography() {
   const photos = [
     {
-      src: "https://via.placeholder.com/800x600?text=Placeholder+1",
-      alt: "Iceland landscape placeholder",
+      src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80",
+      alt: "Iceland landscape",
     },
     {
-      src: "https://via.placeholder.com/800x600?text=Placeholder+2",
-      alt: "Waterfall placeholder",
+      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+      alt: "Mountain scenery",
     },
     {
-      src: "https://via.placeholder.com/800x600?text=Placeholder+3",
-      alt: "Geyser placeholder",
+      src: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80",
+      alt: "Geyser",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800&q=80",
+      alt: "Waterfall",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80",
+      alt: "Northern landscape",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80",
+      alt: "Sunset vista",
     },
   ];
+  
   return (
     <>
       <NavBar />
-      <section className="min-h-screen bg-black dark:bg-black text-gray-200 py-20 px-4 flex flex-col items-center">
-        <div className="max-w-5xl text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-wide mb-4">Photography</h1>
-          <p className="text-lg md:text-xl leading-relaxed text-gray-400">
-            During my trip to Iceland, I explored the famous Golden Circle route, which takes you through incredible natural wonders including Thingvellir National Park, where you can walk between the tectonic plates of North America and Eurasia, the Geysir geothermal area where the Strokkur geyser erupts every few minutes, and the dramatic Gullfoss waterfall. I captured these landscapes to share the beauty of Iceland.
+      <section className="min-h-screen bg-white dark:bg-gray-900 pt-32 pb-20 px-6 sm:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-5xl sm:text-6xl font-light tracking-tight text-gray-900 dark:text-white mb-8">
+            Photography
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-16 max-w-3xl leading-relaxed">
+            Captured during my trip to Iceland, exploring the famous Golden Circle route—from Thingvellir National Park to the dramatic Gullfoss waterfall.
           </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-5xl">
-          {photos.map((photo, index) => (
-            <div key={index} className="overflow-hidden rounded-lg border border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-200">
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                className="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {photos.map((photo, index) => (
+              <div key={index} className="group relative overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-[4/3]">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>

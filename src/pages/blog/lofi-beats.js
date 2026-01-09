@@ -1,31 +1,51 @@
 import NavBar from "../../components/NavBar";
+import Link from "next/link";
 
 export default function LofiBeats() {
   return (
     <div>
       <NavBar />
-      <article className="max-w-3xl mx-auto px-4 py-10">
-        <h1 className="text-4xl font-bold mb-4">Crafting Lo‑Fi Beats</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">January 9, 2026</p>
-        <audio controls className="w-full mb-6">
-          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
-        <p className="mb-4">
-          Lo‑fi music is a subgenre of hip‑hop that embraces imperfections—think vinyl crackle and tape warble【791554865461590†L150-L208】.
-          The vibe comes from slow, chill drum patterns and soulful chords that create a relaxed atmosphere.
-        </p>
-        <p className="mb-4">
-          Producers often humanize their beats by using swing and off‑grid timing, making the music feel organic and lived‑in.
-          Imperfections aren’t mistakes; they’re essential texture.
-        </p>
-        <p className="mb-4">
-          To create your own lo‑fi track, start in your favorite DAW with a simple drum groove, add melodic layers, then sprinkle in noise and imperfections.
-          Effects like distortion and bitcrushing can add warmth and grit to your sounds【791554865461590†L150-L208】.
-        </p>
-        <p>
-          Feel free to listen to the placeholder track above and imagine how you might personalize it. Real tracks will be added soon!
-        </p>
+      <article className="min-h-screen bg-white dark:bg-gray-900 pt-32 pb-20 px-6 sm:px-8">
+        <div className="max-w-3xl mx-auto">
+          <Link 
+            href="/blog"
+            className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors mb-8 inline-block"
+          >
+            ← Back to Writing
+          </Link>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-8 mb-4">January 9, 2026</p>
+          <h1 className="text-4xl sm:text-5xl font-light tracking-tight text-gray-900 dark:text-white mb-8">
+            Crafting Lo-Fi Beats
+          </h1>
+          <img 
+            src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=1200&q=80" 
+            alt="Music production setup" 
+            className="w-full h-auto mb-12 bg-gray-100 dark:bg-gray-800"
+          />
+          <div className="prose prose-lg dark:prose-invert max-w-none">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              Lo-fi hip-hop has become synonymous with study sessions and relaxation, but there's an art to creating 
+              these seemingly simple beats. The genre embraces imperfection—vinyl crackle, tape hiss, and slightly 
+              off-kilter rhythms all contribute to its warm, nostalgic sound.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              My process usually starts with finding or creating a melodic element—often a jazz sample or a 
+              simple chord progression played on keys or guitar. The key is to keep it mellow and not too complex. 
+              I then layer in drums, typically with a boom-bap pattern but with the hi-hats slightly behind the beat 
+              to create that laid-back feel.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              The magic happens in the finishing touches. I add vinyl crackle, reduce the bit depth slightly, 
+              apply some gentle low-pass filtering, and maybe throw in some ambient sounds—rain, cafe chatter, 
+              or distant traffic. These imperfections are what give lo-fi its character and charm.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              What I love most about producing lo-fi is that it's as much about what you leave out as what you 
+              put in. The genre thrives on simplicity and space, creating a sonic environment that's perfect for 
+              focusing or unwinding.
+            </p>
+          </div>
+        </div>
       </article>
     </div>
   );

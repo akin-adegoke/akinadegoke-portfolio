@@ -15,7 +15,7 @@ export default function Blog() {
       title: "Exploring Iceland's Golden Circle",
       date: "January 9, 2026",
       excerpt:
-        "Highlights from my photography trip around Thingvellir, Geysir and Gullfoss.",
+        "Highlights from my photography trip around Thingvellir, Geysir, and Gullfoss.",
     },
     {
       slug: "lofi-beats",
@@ -29,21 +29,26 @@ export default function Blog() {
   return (
     <>
       <NavBar />
-      <main className="pt-28 pb-16 min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-gray-100">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-4">Blog</h1>
-          <p className="text-lg text-gray-400 mb-10">
-            Insights and stories from my journey in engineering, photography & music
+      <main className="min-h-screen bg-white dark:bg-gray-900 pt-32 pb-20 px-6 sm:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-5xl sm:text-6xl font-light tracking-tight text-gray-900 dark:text-white mb-8">
+            Writing
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-16">
+            Insights and stories from my journey in engineering, photography, and music.
           </p>
-          <div className="grid gap-8 sm:grid-cols-2">
+          <div className="space-y-12">
             {posts.map((post) => (
               <Link href={`/blog/${post.slug}`} key={post.slug}>
-                <div className="group rounded-2xl border border-gray-700 bg-gray-800/50 p-6 backdrop-blur transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-                  <h2 className="text-2xl font-semibold text-white mb-2">{post.title}</h2>
-                  <p className="text-xs uppercase tracking-wide text-purple-400 mb-1">{post.date}</p>
-                  <p className="text-sm text-gray-300 mb-4">{post.excerpt}</p>
-                  <span className="inline-block font-medium text-purple-500 group-hover:underline">Read More →</span>
-                </div>
+                <article className="group border-b border-gray-200 dark:border-gray-800 pb-12 last:border-0">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{post.date}</p>
+                  <h2 className="text-2xl font-medium text-gray-900 dark:text-white mb-3 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                </article>
               </Link>
             ))}
           </div>
