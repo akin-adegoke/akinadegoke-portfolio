@@ -14,7 +14,7 @@ export default function Contact() {
           <p className="mb-6">
             Connect with me on{' '}
             <a
-              href="https://www.linkedin.com/in/adegoke"
+              href="https://www.linkedin.com/in/akinadegoke"
               className="text-blue-500 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
