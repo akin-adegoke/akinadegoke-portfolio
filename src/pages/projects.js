@@ -139,7 +139,7 @@ export default function Projects() {
                   </div>
 
                   {/* Positions */}
-                  <div className="space-y-8 pl-0 sm:pl-26">
+                  <div className="space-y-8 pl-0 sm:pl-24">
                     {company.positions.map((position, posIdx) => (
                       <div key={posIdx} className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
                         <div className="mb-3">
