@@ -1,48 +1,41 @@
 import NavBar from "../components/NavBar";
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <>
       <NavBar />
-      <main className="pt-28 pb-16 min-h-screen bg-gradient-to-b from-gray-100 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white">
-            Welcome, I'm Akin Adegoke
-          </h1>
-          <p className="text-lg sm:text-xl mb-8 text-gray-700 dark:text-gray-300">
-            Test & Integration Engineer · Smart Greenhouse Builder · Photographer · Music Producer
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="/projects"
-              className="px-6 py-3 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition"
-            >
-              Projects
-            </a>
-            <a
-              href="/photography"
-              className="px-6 py-3 rounded-md bg-purple-600 text-white hover:bg-purple-700 transition"
-            >
-              Photography
-            </a>
-            <a
-              href="/music"
-              className="px-6 py-3 rounded-md bg-pink-600 text-white hover:bg-pink-700 transition"
-            >
-              Music
-            </a>
-            <a
-              href="/blog"
-              className="px-6 py-3 rounded-md bg-green-600 text-white hover:bg-green-700 transition"
-            >
-              Blog
-            </a>
-            <a
-              href="/contact"
-              className="px-6 py-3 rounded-md bg-yellow-500 text-gray-900 hover:bg-yellow-600 transition"
-            >
-              Contact
-            </a>
+      <main className="pt-32 pb-20 min-h-screen bg-white dark:bg-gray-900 flex items-center">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8">
+          <div className="space-y-8">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl font-light tracking-tight text-gray-900 dark:text-white">
+              Akin Adegoke
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 font-light max-w-2xl">
+              Test & Integration Engineer crafting intelligent systems.
+              <br />
+              Builder, photographer, and music producer.
+            </p>
+            <div className="flex flex-wrap gap-6 pt-4">
+              <Link
+                href="/projects"
+                className="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors border-b-2 border-transparent hover:border-gray-900 dark:hover:border-gray-100 pb-1"
+              >
+                View Projects →
+              </Link>
+              <Link
+                href="/about"
+                className="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors border-b-2 border-transparent hover:border-gray-900 dark:hover:border-gray-100 pb-1"
+              >
+                About Me →
+              </Link>
+              <Link
+                href="/contact"
+                className="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors border-b-2 border-transparent hover:border-gray-900 dark:hover:border-gray-100 pb-1"
+              >
+                Get in Touch →
+              </Link>
+            </div>
           </div>
         </div>
       </main>
