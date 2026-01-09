@@ -4,55 +4,21 @@ export default function Contact() {
   return (
     <>
       <NavBar />
-      <section className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-12">
-        <div className="container mx-auto max-w-2xl p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-          <h1 className="text-3xl font-bold mb-4">Get in Touch</h1>
-          <p className="mb-6">
-            I'd love to hear from you! Whether you want to collaborate on an engineering project,
-            discuss photography adventures, or share musical vibes, feel free to reach out.
+      <section className="min-h-screen flex items-center justify-center bg-black dark:bg-black text-gray-200 py-20 px-4">
+        <div className="w-full max-w-3xl bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 shadow-xl">
+          <h1 className="text-5xl font-bold mb-6 text-center">Get in Touch</h1>
+          <p className="mb-8 text-center text-lg text-gray-400">
+            I'd love to hear from you! Whether you want to collaborate on an engineering project, discuss photography adventures, or share musical vibes, feel free to reach out.
           </p>
-          <p className="mb-6">
-            Connect with me on{' '}
-            <a
-              href="https://www.linkedin.com/in/akinadegoke"
-              className="text-blue-500 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>{' '}
-            or{' '}
-            <a
-              href="https://instagram.com/_ak1nn_"
-              className="text-pink-500 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram
-            </a>
-            .
-          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+            <a href="https://www.linkedin.com/in/adegoke" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-gray-600 rounded-full text-gray-300 hover:bg-gray-800 transition-colors">LinkedIn</a>
+            <a href="https://instagram.com/_ak1nn_" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-gray-600 rounded-full text-gray-300 hover:bg-gray-800 transition-colors">Instagram</a>
+          </div>
           <form className="flex flex-col space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="p-3 border rounded dark:bg-gray-700 dark:text-white dark:border-gray-600"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="p-3 border rounded dark:bg-gray-700 dark:text-white dark:border-gray-600"
-            />
-            <textarea
-              placeholder="Your Message"
-              className="p-3 border rounded h-32 dark:bg-gray-700 dark:text-white dark:border-gray-600"
-            ></textarea>
-            <button
-              type="submit"
-              className="p-3 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Send Message
-            </button>
+            <input type="text" placeholder="Your Name" className="p-4 bg-gray-800 border border-gray-700 rounded text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <input type="email" placeholder="Your Email" className="p-4 bg-gray-800 border border-gray-700 rounded text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <textarea placeholder="Your Message" className="p-4 bg-gray-800 border border-gray-700 rounded text-gray-200 h-32 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            <button type="submit" className="p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Send Message</button>
           </form>
         </div>
       </section>
