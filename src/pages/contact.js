@@ -1,6 +1,37 @@
 import NavBar from "../components/NavBar";
+import { useState } from "react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [status, setStatus] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    // Use mailto as a simple solution
+    const mailtoLink = `mailto:akin.adegoke10@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    
+    window.location.href = mailtoLink;
+    
+    // Reset form
+    setFormData({ name: '', email: '', message: '' });
+    setStatus('sent');
+    
+    setTimeout(() => setStatus(''), 3000);
+  };
+
   return (
     <>
       <NavBar />
@@ -30,7 +61,12 @@ export default function Contact() {
               Instagram
             </a>
           </div>
-          <form className="space-y-6">
+          {status === 'sent' && (
+            <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200">
+              Your email client should open shortly. Thank you for reaching out!
+            </div>
+          )}
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-sm text-gray-700 dark:text-gray-300 mb-2">
                 Name
@@ -38,6 +74,9 @@ export default function Contact() {
               <input 
                 type="text" 
                 id="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
                 placeholder="Your name"
                 className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
               />
@@ -49,6 +88,9 @@ export default function Contact() {
               <input 
                 type="email" 
                 id="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
                 placeholder="your@email.com"
                 className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
               />
@@ -59,6 +101,9 @@ export default function Contact() {
               </label>
               <textarea 
                 id="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
                 placeholder="Your message"
                 rows="6"
                 className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors resize-none"
@@ -66,9 +111,10 @@ export default function Contact() {
             </div>
             <button 
               type="submit" 
-              className="px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors"
+              disabled={status === 'sending'}
+              className="px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {status === 'sending' ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>
