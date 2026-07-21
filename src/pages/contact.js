@@ -38,19 +38,20 @@ export default function Contact() {
       <section className="relative z-10 min-h-screen pt-32 pb-24 px-6 sm:px-8 flex items-center">
         <div className="w-full max-w-2xl mx-auto">
           <p
-            className="reveal font-mono text-xs tracking-[0.25em] uppercase text-accent mb-4"
+            className="reveal font-mono text-xs tracking-[0.25em] uppercase text-accent mb-4 flex items-center gap-2"
             style={{ animationDelay: "0.05s" }}
           >
-            06 / Contact
+            <span className="font-body normal-case tracking-normal">接続</span>
+            <span className="text-dim">// CONNECT</span>
           </p>
           <h1
-            className="reveal font-display text-5xl sm:text-6xl md:text-7xl text-ink mb-6"
+            className="reveal font-display text-5xl sm:text-6xl md:text-7xl text-chalk mb-6"
             style={{ animationDelay: "0.15s" }}
           >
-            Get in <span className="italic text-accent">touch.</span>
+            Get in <span className="text-accent">touch.</span>
           </h1>
           <p
-            className="reveal text-lg text-muted mb-10 leading-relaxed"
+            className="reveal text-lg text-dim mb-10 leading-relaxed"
             style={{ animationDelay: "0.25s" }}
           >
             I'd love to hear from you. Whether you want to collaborate on an engineering
@@ -65,7 +66,7 @@ export default function Contact() {
               href="https://www.linkedin.com/in/adegoke"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink hover:text-accent transition-colors border-b border-edge hover:border-accent pb-0.5"
+              className="text-chalk hover:text-accent transition-colors border-b border-edge hover:border-accent pb-0.5"
             >
               LinkedIn
             </a>
@@ -73,7 +74,7 @@ export default function Contact() {
               href="https://instagram.com/_ak1nn_"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink hover:text-accent transition-colors border-b border-edge hover:border-accent pb-0.5"
+              className="text-chalk hover:text-accent transition-colors border-b border-edge hover:border-accent pb-0.5"
             >
               Instagram
             </a>
@@ -84,13 +85,13 @@ export default function Contact() {
             </div>
           )}
           <form
-            className="reveal space-y-6 border border-edge bg-surface p-6 sm:p-8"
+            className="reveal space-y-6 border border-edge bg-panel p-6 sm:p-8"
             onSubmit={handleSubmit}
             style={{ animationDelay: "0.4s" }}
           >
             <div>
-              <label htmlFor="name" className="block font-mono text-[11px] tracking-[0.15em] uppercase text-muted mb-2">
-                Name
+              <label htmlFor="name" className="flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase text-dim mb-2">
+                <span className="text-accent">&gt;</span> Name
               </label>
               <input
                 type="text"
@@ -99,12 +100,12 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="Your name"
-                className="w-full px-4 py-3 bg-transparent border border-edge text-ink placeholder-muted/60 focus:outline-none focus:border-accent transition-colors"
+                className="w-full px-4 py-3 bg-void border border-edge text-chalk placeholder-dim focus:outline-none focus:border-accent transition-colors"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block font-mono text-[11px] tracking-[0.15em] uppercase text-muted mb-2">
-                Email
+              <label htmlFor="email" className="flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase text-dim mb-2">
+                <span className="text-accent">&gt;</span> Email
               </label>
               <input
                 type="email"
@@ -113,12 +114,12 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="your@email.com"
-                className="w-full px-4 py-3 bg-transparent border border-edge text-ink placeholder-muted/60 focus:outline-none focus:border-accent transition-colors"
+                className="w-full px-4 py-3 bg-void border border-edge text-chalk placeholder-dim focus:outline-none focus:border-accent transition-colors"
               />
             </div>
             <div>
-              <label htmlFor="message" className="block font-mono text-[11px] tracking-[0.15em] uppercase text-muted mb-2">
-                Message
+              <label htmlFor="message" className="flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase text-dim mb-2">
+                <span className="text-accent">&gt;</span> Message
               </label>
               <textarea
                 id="message"
@@ -127,15 +128,15 @@ export default function Contact() {
                 required
                 placeholder="Your message"
                 rows="6"
-                className="w-full px-4 py-3 bg-transparent border border-edge text-ink placeholder-muted/60 focus:outline-none focus:border-accent transition-colors resize-none"
+                className="w-full px-4 py-3 bg-void border border-edge text-chalk placeholder-dim focus:outline-none focus:border-accent transition-colors resize-none"
               ></textarea>
             </div>
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="px-8 py-3 bg-accent text-[var(--bg)] font-mono text-xs tracking-[0.15em] uppercase font-medium hover:opacity-85 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-3 bg-accent text-void font-mono text-xs tracking-[0.15em] uppercase font-medium hover:opacity-85 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {status === 'sending' ? 'Sending...' : 'Send Message'}
+              {status === 'sending' ? '[ Transmitting... ]' : '[ Transmit ]'}
             </button>
           </form>
         </div>
