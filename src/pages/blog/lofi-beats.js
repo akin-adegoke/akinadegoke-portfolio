@@ -10,25 +10,25 @@ export default function LofiBeats() {
         <div className="max-w-3xl mx-auto">
           <Link
             href="/blog"
-            className="reveal font-mono text-xs tracking-[0.15em] uppercase text-muted hover:text-accent transition-colors mb-8 inline-block"
+            className="reveal font-mono text-xs tracking-[0.15em] uppercase text-dim hover:text-accent transition-colors mb-8 inline-block"
           >
-            ← Back to Writing
+            ← back_to_writing
           </Link>
           <p className="reveal font-mono text-xs tracking-[0.15em] uppercase text-accent mt-8 mb-4" style={{ animationDelay: "0.1s" }}>
             January 9, 2026
           </p>
-          <h1 className="reveal font-display text-4xl sm:text-5xl text-ink mb-8" style={{ animationDelay: "0.15s" }}>
+          <h1 className="reveal font-display text-4xl sm:text-5xl text-chalk mb-8" style={{ animationDelay: "0.15s" }}>
             Crafting Lo-Fi Beats
           </h1>
           <div className="reveal relative mb-12" style={{ animationDelay: "0.2s" }}>
             <img
               src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=1200&q=80"
               alt="Music production setup"
-              className="w-full h-auto bg-surface border border-edge"
+              className="w-full h-auto bg-panel border border-edge"
             />
             <Corners />
           </div>
-          <div className="reveal space-y-6 text-lg text-muted leading-relaxed" style={{ animationDelay: "0.3s" }}>
+          <div className="reveal space-y-6 text-lg text-dim leading-relaxed" style={{ animationDelay: "0.3s" }}>
             <p>
               Lo-fi hip-hop has become synonymous with study sessions and relaxation, but there's an art to creating
               these seemingly simple beats. The genre embraces imperfection&mdash;vinyl crackle, tape hiss, and slightly

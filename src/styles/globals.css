@@ -3,31 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f3eee2;
-  --surface: #eae2cf;
-  --border: #d9ceb0;
-  --ink: #17140f;
-  --muted: #6b6355;
-  --accent: #c1560a;
-  --accent-soft: rgba(193, 86, 10, 0.12);
-  --grid-line: rgba(23, 20, 15, 0.055);
-  --grain-opacity: 0.05;
+  --void: #0a0f0f;
+  --panel: #111a1a;
+  --edge: rgba(77, 232, 224, 0.22);
+  --chalk: #e4f5f3;
+  --dim: #5e7a78;
+  --accent: #4de8e0;
+  --accent-soft: rgba(77, 232, 224, 0.12);
+  --signal: #ff4d6d;
 }
 
-.dark {
-  --bg: #0b0d10;
-  --surface: #12151a;
-  --border: #1e2229;
-  --ink: #f3efe6;
-  --muted: #878c97;
-  --accent: #ff9a3d;
-  --accent-soft: rgba(255, 154, 61, 0.14);
-  --grid-line: rgba(255, 255, 255, 0.045);
-  --grain-opacity: 0.045;
+.standby {
+  --edge: rgba(150, 160, 158, 0.18);
+  --chalk: #b9c4c2;
+  --dim: #46504f;
+  --accent: #6b7d7c;
+  --accent-soft: rgba(107, 125, 124, 0.12);
+  --signal: #8a5b62;
 }
 
 * {
-  border-color: var(--border);
+  border-color: var(--edge);
 }
 
 html {
@@ -35,15 +31,15 @@ html {
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--ink);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  background-color: var(--void);
+  color: var(--chalk);
+  font-family: "Zen Kaku Gothic New", sans-serif;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::selection {
   background: var(--accent);
-  color: var(--bg);
+  color: var(--void);
 }
 
 ::-webkit-scrollbar {
@@ -51,43 +47,38 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--void);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: var(--edge);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
 }
 
-.bg-grid {
+.bg-scanlines {
   background-image: repeating-linear-gradient(
-      0deg,
-      var(--grid-line) 0,
-      var(--grid-line) 1px,
-      transparent 1px,
-      transparent 40px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      var(--grid-line) 0,
-      var(--grid-line) 1px,
-      transparent 1px,
-      transparent 40px
-    );
-}
-
-.bg-grain {
-  opacity: var(--grain-opacity);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.bg-glow {
-  background: radial-gradient(
-    ellipse 60% 40% at 50% -10%,
-    var(--accent-soft),
-    transparent 70%
+    to bottom,
+    rgba(77, 232, 224, 0.035) 0px,
+    rgba(77, 232, 224, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
   );
+}
+
+.bg-vignette {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 25%,
+    transparent 35%,
+    var(--void) 150%
+  );
+}
+
+.font-display {
+  font-family: "Chakra Petch", sans-serif;
+}
+.font-body {
+  font-family: "Zen Kaku Gothic New", sans-serif;
 }
 
 @keyframes fadeUp {
@@ -129,12 +120,26 @@ body {
   }
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
+@keyframes glitchText {
+  0% {
+    text-shadow: 0 0 0 transparent;
+    transform: translate(0);
   }
-  to {
-    transform: translateX(-50%);
+  20% {
+    text-shadow: -2px 0 var(--signal), 2px 0 var(--accent);
+    transform: translate(-1px, 0);
+  }
+  40% {
+    text-shadow: 2px 0 var(--signal), -2px 0 var(--accent);
+    transform: translate(1px, 0);
+  }
+  60% {
+    text-shadow: -1px 0 var(--signal), 1px 0 var(--accent);
+    transform: translate(-1px, 0);
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+    transform: translate(0);
   }
 }
 
@@ -151,12 +156,8 @@ body {
   animation: scan 6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
-.animate-marquee {
-  animation: marquee 22s linear infinite;
-}
-
-.font-display {
-  font-family: "Fraunces", serif;
+.glitch-hover:hover {
+  animation: glitchText 0.35s steps(2, end) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

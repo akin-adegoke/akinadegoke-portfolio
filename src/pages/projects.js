@@ -4,6 +4,7 @@ import Corners from "../components/Corners";
 const projects = [
   {
     title: "Smart Greenhouse",
+    status: "ACTIVE",
     description:
       "A fully automated greenhouse using soil moisture, light, and temperature sensors. An AI-powered camera analyzes plant health to optimize care.",
     image:
@@ -12,14 +13,16 @@ const projects = [
   },
   {
     title: "Personal Portfolio",
+    status: "DEPLOYED",
     description:
-      "Console-inspired portfolio showcasing projects, photos, and music. Built with Next.js and Tailwind CSS.",
+      "Terminal-inspired portfolio showcasing projects, photos, and music. Built with Next.js and Tailwind CSS.",
     image:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
     link: "#",
   },
   {
     title: "IoT Weather Station",
+    status: "DEPLOYED",
     description:
       "IoT-enabled station collecting local climate data and streaming it to the cloud for real-time analysis.",
     image:
@@ -88,16 +91,17 @@ export default function Projects() {
       <main className="relative z-10 min-h-screen pt-32 pb-24 px-6 sm:px-8">
         <div className="max-w-6xl mx-auto">
           <p
-            className="reveal font-mono text-xs tracking-[0.25em] uppercase text-accent mb-4"
+            className="reveal font-mono text-xs tracking-[0.25em] uppercase text-accent mb-4 flex items-center gap-2"
             style={{ animationDelay: "0.05s" }}
           >
-            02 / Work
+            <span className="font-body normal-case tracking-normal">検証</span>
+            <span className="text-dim">// VERIFICATION</span>
           </p>
           <h1
-            className="reveal font-display text-5xl sm:text-6xl md:text-7xl text-ink mb-16"
+            className="reveal font-display text-5xl sm:text-6xl md:text-7xl text-chalk mb-16"
             style={{ animationDelay: "0.15s" }}
           >
-            Selected <span className="italic text-accent">projects.</span>
+            Selected <span className="text-accent">projects.</span>
           </h1>
 
           <div className="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 mb-32">
@@ -108,23 +112,24 @@ export default function Projects() {
                 className="reveal group block"
                 style={{ animationDelay: `${0.25 + idx * 0.1}s` }}
               >
-                <div className="relative overflow-hidden bg-surface aspect-[4/3] mb-5 border border-edge">
+                <div className="relative overflow-hidden bg-panel aspect-[4/3] mb-5 border border-edge">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover grayscale-[35%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover grayscale-[45%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                   />
                   <Corners className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <span className="absolute top-3 left-3 font-mono text-[10px] tracking-[0.2em] uppercase bg-surface/90 text-accent px-2 py-1 border border-edge">
-                    File_0{idx + 1}
+                  <span className="absolute top-3 left-3 font-mono text-[10px] tracking-[0.2em] uppercase bg-void border border-edge text-accent px-2 py-1 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                    {project.status}
                   </span>
                 </div>
-                <h3 className="font-display text-2xl text-ink mb-2 group-hover:text-accent transition-colors">
+                <h3 className="font-display text-2xl text-chalk mb-2 group-hover:text-accent transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-muted mb-3 leading-relaxed">{project.description}</p>
-                <span className="font-mono text-xs tracking-[0.15em] uppercase text-ink border-b border-edge group-hover:border-accent group-hover:text-accent transition-colors">
-                  View Project →
+                <p className="text-dim mb-3 leading-relaxed">{project.description}</p>
+                <span className="font-mono text-xs tracking-[0.15em] uppercase text-chalk border-b border-edge group-hover:border-accent group-hover:text-accent transition-colors">
+                  view_project →
                 </span>
               </a>
             ))}
@@ -135,10 +140,10 @@ export default function Projects() {
               className="reveal font-mono text-xs tracking-[0.25em] uppercase text-accent mb-4"
               style={{ animationDelay: "0.1s" }}
             >
-              Log
+              employment.log
             </p>
             <h2
-              className="reveal font-display text-4xl sm:text-5xl text-ink mb-16"
+              className="reveal font-display text-4xl sm:text-5xl text-chalk mb-16"
               style={{ animationDelay: "0.2s" }}
             >
               Employment
@@ -147,14 +152,14 @@ export default function Projects() {
               {employmentHistory.map((company) => (
                 <div key={company.company} className="reveal" style={{ animationDelay: "0.3s" }}>
                   <div className="flex items-center gap-6 mb-8">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center bg-surface p-3 border border-edge">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center bg-panel p-3 border border-edge">
                       <img
                         src={company.logo}
                         alt={company.company}
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <h3 className="font-display text-2xl sm:text-3xl text-ink">
+                    <h3 className="font-display text-2xl sm:text-3xl text-chalk">
                       {company.company}
                     </h3>
                   </div>
@@ -166,8 +171,8 @@ export default function Projects() {
                         className="border-l-2 border-edge hover:border-accent transition-colors pl-6"
                       >
                         <div className="mb-3">
-                          <h4 className="text-lg font-medium text-ink mb-1">{position.title}</h4>
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 font-mono text-xs uppercase tracking-[0.1em] text-muted">
+                          <h4 className="text-lg font-medium text-chalk mb-1">{position.title}</h4>
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 font-mono text-xs uppercase tracking-[0.1em] text-dim">
                             <span>{position.duration}</span>
                             <span className="hidden sm:inline text-accent">•</span>
                             <span>{position.location}</span>
@@ -175,7 +180,7 @@ export default function Projects() {
                         </div>
                         <ul className="space-y-2">
                           {position.highlights.map((highlight) => (
-                            <li key={highlight} className="text-muted text-sm leading-relaxed flex">
+                            <li key={highlight} className="text-dim text-sm leading-relaxed flex">
                               <span className="mr-2 text-accent">▸</span>
                               <span>{highlight}</span>
                             </li>

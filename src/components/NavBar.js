@@ -2,65 +2,65 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const links = [
-  { href: "/about", label: "About", num: "01" },
-  { href: "/projects", label: "Work", num: "02" },
-  { href: "/photography", label: "Photos", num: "03" },
-  { href: "/music", label: "Music", num: "04" },
-  { href: "/blog", label: "Writing", num: "05" },
-  { href: "/contact", label: "Contact", num: "06" },
+  { href: "/about", kanji: "統合", label: "About" },
+  { href: "/projects", kanji: "検証", label: "Work" },
+  { href: "/photography", kanji: "撮影", label: "Photos" },
+  { href: "/music", kanji: "音楽", label: "Music" },
+  { href: "/blog", kanji: "記録", label: "Writing" },
+  { href: "/contact", kanji: "接続", label: "Contact" },
 ];
 
 export default function NavBar() {
-  const [isDark, setIsDark] = useState(false);
+  const [standby, setStandby] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      setIsDark(true);
-      document.documentElement.classList.add("dark");
-    } else if (savedTheme === "light") {
-      setIsDark(false);
-      document.documentElement.classList.remove("dark");
+    const saved = localStorage.getItem("mode");
+    if (saved === "standby") {
+      setStandby(true);
+      document.documentElement.classList.add("standby");
     }
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+    if (standby) {
+      document.documentElement.classList.add("standby");
+      localStorage.setItem("mode", "standby");
     } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove("standby");
+      localStorage.setItem("mode", "online");
     }
-  }, [isDark, mounted]);
+  }, [standby, mounted]);
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md"
-      style={{ backgroundColor: "color-mix(in srgb, var(--bg) 85%, transparent)" }}
+      className="fixed top-0 left-0 right-0 z-50 border-b border-edge backdrop-blur-md"
+      style={{ backgroundColor: "color-mix(in srgb, var(--void) 85%, transparent)" }}
     >
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 sm:px-8 h-16">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display italic text-xl text-ink hover:text-accent transition-colors"
+          className="flex items-center gap-3 font-display font-semibold text-xl text-chalk hover:text-accent transition-colors"
         >
           AA
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-blink" aria-hidden="true" />
+          <span className="hidden lg:inline font-mono text-[10px] tracking-[0.1em] text-dim">
+            root@akin:~$
+          </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-1 font-mono text-[11px] tracking-[0.15em] uppercase">
+        <div className="hidden md:flex items-center gap-1 font-mono text-[11px] tracking-[0.1em] uppercase">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="group flex items-center gap-1.5 px-3 py-2 text-muted hover:text-ink transition-colors"
+              className="group flex items-center gap-1.5 px-3 py-2 text-dim hover:text-chalk transition-colors"
             >
-              <span className="text-accent opacity-0 group-hover:opacity-100 transition-opacity">
-                {l.num}
+              <span className="font-body text-accent opacity-70 group-hover:opacity-100 transition-opacity">
+                {l.kanji}
               </span>
               <span className="border-b border-transparent group-hover:border-accent transition-colors pb-0.5">
                 {l.label}
@@ -71,15 +71,18 @@ export default function NavBar() {
 
         <div className="flex items-center gap-2">
           <button
-            onClick={() => setIsDark(!isDark)}
-            className="w-8 h-8 border border-edge flex items-center justify-center text-accent hover:border-accent hover:bg-accentSoft transition-colors font-mono text-xs"
-            aria-label="Toggle color theme"
+            onClick={() => setStandby(!standby)}
+            className="hidden sm:flex items-center gap-2 px-3 h-8 border border-edge text-[10px] font-mono tracking-[0.15em] uppercase text-dim hover:text-accent hover:border-accent transition-colors"
+            aria-label="Toggle system mode"
           >
-            {isDark ? "☀" : "●"}
+            <span
+              className={`w-1.5 h-1.5 rounded-full ${standby ? "bg-dim" : "bg-accent animate-blink"}`}
+            />
+            {standby ? "Standby" : "Online"}
           </button>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden w-8 h-8 border border-edge flex flex-col items-center justify-center gap-[3px] text-ink"
+            className="md:hidden w-8 h-8 border border-edge flex flex-col items-center justify-center gap-[3px] text-chalk"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
@@ -94,18 +97,27 @@ export default function NavBar() {
       </nav>
 
       {menuOpen && (
-        <div className="md:hidden border-t border-edge font-mono text-xs tracking-[0.15em] uppercase">
+        <div className="md:hidden border-t border-edge font-mono text-xs tracking-[0.1em] uppercase">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 px-6 py-4 text-muted hover:text-ink border-b border-edge last:border-0"
+              className="flex items-center gap-3 px-6 py-4 text-dim hover:text-chalk border-b border-edge last:border-0"
             >
-              <span className="text-accent">{l.num}</span>
+              <span className="font-body text-accent">{l.kanji}</span>
               {l.label}
             </Link>
           ))}
+          <button
+            onClick={() => setStandby(!standby)}
+            className="w-full flex items-center gap-3 px-6 py-4 text-dim hover:text-chalk sm:hidden"
+          >
+            <span
+              className={`w-1.5 h-1.5 rounded-full ${standby ? "bg-dim" : "bg-accent animate-blink"}`}
+            />
+            {standby ? "Standby Mode" : "Online Mode"}
+          </button>
         </div>
       )}
     </header>
