@@ -29,25 +29,45 @@ export default function Blog() {
   return (
     <>
       <NavBar />
-      <main className="min-h-screen bg-white dark:bg-gray-900 pt-32 pb-20 px-6 sm:px-8">
+      <main className="relative z-10 min-h-screen pt-32 pb-24 px-6 sm:px-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl sm:text-6xl font-light tracking-tight text-gray-900 dark:text-white mb-8">
-            Writing
+          <p
+            className="reveal font-mono text-xs tracking-[0.25em] uppercase text-accent mb-4"
+            style={{ animationDelay: "0.05s" }}
+          >
+            05 / Writing
+          </p>
+          <h1
+            className="reveal font-display text-5xl sm:text-6xl md:text-7xl text-ink mb-6"
+            style={{ animationDelay: "0.15s" }}
+          >
+            Field <span className="italic text-accent">notes.</span>
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-16">
+          <p
+            className="reveal text-lg text-muted mb-16 leading-relaxed"
+            style={{ animationDelay: "0.25s" }}
+          >
             Insights and stories from my journey in engineering, photography, and music.
           </p>
-          <div className="space-y-12">
-            {posts.map((post) => (
+          <div className="space-y-2">
+            {posts.map((post, idx) => (
               <Link href={`/blog/${post.slug}`} key={post.slug}>
-                <article className="group border-b border-gray-200 dark:border-gray-800 pb-12 last:border-0">
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{post.date}</p>
-                  <h2 className="text-2xl font-medium text-gray-900 dark:text-white mb-3 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+                <article
+                  className="reveal group border-b border-edge hover:border-accent py-8 transition-colors"
+                  style={{ animationDelay: `${0.35 + idx * 0.1}s` }}
+                >
+                  <div className="flex items-baseline justify-between gap-4 mb-2">
+                    <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-muted">
+                      {post.date}
+                    </p>
+                    <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                      Read →
+                    </span>
+                  </div>
+                  <h2 className="font-display text-2xl sm:text-3xl text-ink mb-3 group-hover:text-accent transition-colors">
                     {post.title}
                   </h2>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {post.excerpt}
-                  </p>
+                  <p className="text-muted leading-relaxed">{post.excerpt}</p>
                 </article>
               </Link>
             ))}

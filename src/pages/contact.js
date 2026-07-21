@@ -22,97 +22,118 @@ export default function Contact() {
 
     // Use mailto as a simple solution
     const mailtoLink = `mailto:akin.adegoke10@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-    
+
     window.location.href = mailtoLink;
-    
+
     // Reset form
     setFormData({ name: '', email: '', message: '' });
     setStatus('sent');
-    
+
     setTimeout(() => setStatus(''), 3000);
   };
 
   return (
     <>
       <NavBar />
-      <section className="min-h-screen bg-white dark:bg-gray-900 pt-32 pb-20 px-6 sm:px-8 flex items-center">
+      <section className="relative z-10 min-h-screen pt-32 pb-24 px-6 sm:px-8 flex items-center">
         <div className="w-full max-w-2xl mx-auto">
-          <h1 className="text-5xl sm:text-6xl font-light tracking-tight text-gray-900 dark:text-white mb-8">
-            Get in Touch
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">
-            I'd love to hear from you. Whether you want to collaborate on an engineering project, discuss photography adventures, or share musical vibes, feel free to reach out.
+          <p
+            className="reveal font-mono text-xs tracking-[0.25em] uppercase text-accent mb-4"
+            style={{ animationDelay: "0.05s" }}
+          >
+            06 / Contact
           </p>
-          <div className="flex gap-6 mb-12">
-            <a 
-              href="https://www.linkedin.com/in/adegoke" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors border-b border-gray-900 dark:border-white hover:border-gray-600 dark:hover:border-gray-300"
+          <h1
+            className="reveal font-display text-5xl sm:text-6xl md:text-7xl text-ink mb-6"
+            style={{ animationDelay: "0.15s" }}
+          >
+            Get in <span className="italic text-accent">touch.</span>
+          </h1>
+          <p
+            className="reveal text-lg text-muted mb-10 leading-relaxed"
+            style={{ animationDelay: "0.25s" }}
+          >
+            I'd love to hear from you. Whether you want to collaborate on an engineering
+            project, discuss photography adventures, or share musical vibes, feel free to
+            reach out.
+          </p>
+          <div
+            className="reveal flex gap-6 mb-10 font-mono text-xs tracking-[0.15em] uppercase"
+            style={{ animationDelay: "0.3s" }}
+          >
+            <a
+              href="https://www.linkedin.com/in/adegoke"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink hover:text-accent transition-colors border-b border-edge hover:border-accent pb-0.5"
             >
               LinkedIn
             </a>
-            <a 
-              href="https://instagram.com/_ak1nn_" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors border-b border-gray-900 dark:border-white hover:border-gray-600 dark:hover:border-gray-300"
+            <a
+              href="https://instagram.com/_ak1nn_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink hover:text-accent transition-colors border-b border-edge hover:border-accent pb-0.5"
             >
               Instagram
             </a>
           </div>
           {status === 'sent' && (
-            <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200">
+            <div className="mb-6 p-4 border border-accent bg-accentSoft text-accent font-mono text-xs tracking-[0.1em] uppercase">
               Your email client should open shortly. Thank you for reaching out!
             </div>
           )}
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form
+            className="reveal space-y-6 border border-edge bg-surface p-6 sm:p-8"
+            onSubmit={handleSubmit}
+            style={{ animationDelay: "0.4s" }}
+          >
             <div>
-              <label htmlFor="name" className="block text-sm text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="name" className="block font-mono text-[11px] tracking-[0.15em] uppercase text-muted mb-2">
                 Name
               </label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 id="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
                 placeholder="Your name"
-                className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
+                className="w-full px-4 py-3 bg-transparent border border-edge text-ink placeholder-muted/60 focus:outline-none focus:border-accent transition-colors"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="email" className="block font-mono text-[11px] tracking-[0.15em] uppercase text-muted mb-2">
                 Email
               </label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 id="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
                 placeholder="your@email.com"
-                className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
+                className="w-full px-4 py-3 bg-transparent border border-edge text-ink placeholder-muted/60 focus:outline-none focus:border-accent transition-colors"
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="message" className="block font-mono text-[11px] tracking-[0.15em] uppercase text-muted mb-2">
                 Message
               </label>
-              <textarea 
+              <textarea
                 id="message"
                 value={formData.message}
                 onChange={handleChange}
                 required
                 placeholder="Your message"
                 rows="6"
-                className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors resize-none"
+                className="w-full px-4 py-3 bg-transparent border border-edge text-ink placeholder-muted/60 focus:outline-none focus:border-accent transition-colors resize-none"
               ></textarea>
             </div>
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={status === 'sending'}
-              className="px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-3 bg-accent text-[var(--bg)] font-mono text-xs tracking-[0.15em] uppercase font-medium hover:opacity-85 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {status === 'sending' ? 'Sending...' : 'Send Message'}
             </button>
